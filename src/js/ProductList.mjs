@@ -1,8 +1,10 @@
 import { renderListWithTemplate } from './utils.mjs';
 
-function productCardTemplate(product) {
+// && product.Id = '985PR' && product.Id = '344YJ'
 
-  return `<li class="product-card">
+function productCardTemplate(product) {
+  if (product.Id == '880RR' || product.Id == '985RF' || product.Id == '344YJ' || product.Id == '985PR') {
+    return `<li class="product-card">
   <a href="product_pages/index.html?product=${product.Id}&category=${product.category}">
   <img
     src="${product.Image}"
@@ -12,7 +14,14 @@ function productCardTemplate(product) {
   <h2 class="card__name">${product.Name}</h2>
   <p class="product-card__price">$${product.FinalPrice}</p></a>
 </li>`;
+  }
 }
+
+    // 1 Write a method in productList.js that will filter our list of products to just the four (4) we need.
+
+    
+    // 2 Use that method to show only those four (4) tents.
+
 
 export default class ProductList {
   constructor(category, dataSource, listElement) {
