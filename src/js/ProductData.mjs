@@ -2,7 +2,7 @@ function convertToJson(res) {
   if (res.ok) {
     return res.json();
   } else {
-    throw new Error('Bad Response');
+    throw new Error(`Bad Response`);
   }
 }
 
@@ -12,12 +12,15 @@ export default class ProductData {
     this.path = `../json/${this.category}.json`;
   }
 
-  getData() {
-    return fetch(this.path);
+  async getData() {
+    return (await convertToJson(await fetch(this.path))).map((item) => ({
+      ...item,
+      category: this.category,
+    }));
   }
 
   async findProductById(id) {
-    const products = await convertToJson(await this.getData());
+    const products = await this.getData();
     return products.find((item) => item.Id === id);
   }
 }
