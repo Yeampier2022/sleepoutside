@@ -1,0 +1,14 @@
+
+.container-img {
+  width: 25vw;
+}
+
+.img {
+  justify-content: space-around;
+  display: flex;
+
+}
+img {
+  width: 4vw;
+  justify-content: center;
+}
