@@ -14,7 +14,11 @@ function cartItemTemplate(item) {
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
   <p class="cart-card__quantity">qty: 1</p>
   <p class="cart-card__price">$${item.FinalPrice}</p>
-</li>`;
+</li>`
+
+
+
+;
 
   return newItem;
 }
@@ -26,7 +30,13 @@ export default class ShoppingCart {
   }
   renderCartContents() {
     const cartItems = getLocalStorage(this.key);
+    if (!cartItems) { 
+      document.querySelector(this.parentSelector).innerHTML = '<p>No hay productos en el carrito</p>';
+      return;
+    }
     const htmlItems = cartItems.map((item) => cartItemTemplate(item));
     document.querySelector(this.parentSelector).innerHTML = htmlItems.join('');
+    const cartTotal = cartItems.reduce((total, item) => total + item.FinalPrice, 0);
+    document.getElementById('total').textContent = `${cartTotal}`;
   }
 }
