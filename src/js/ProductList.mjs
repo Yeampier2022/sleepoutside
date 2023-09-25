@@ -4,9 +4,9 @@ import { renderListWithTemplate } from './utils.mjs';
 function productCardTemplate(product) {
   if (product.Id == '880RR' || product.Id == '985RF' || product.Id == '344YJ' || product.Id == '985PR') {
     return `<li class="product-card">
-  <a href="product_pages/index.html?product=${product.Id}&category=${product.category}">
+  <a href="product_pages/index.html?product=${product.Id}&category=${product.Category}">
   <img
-    src="${product.Image}"
+    src="${product.Images.PrimaryMedium}"
     alt="Image of ${product.Name}"
   />
   <h3 class="card__brand">${product.Brand.Name}</h3>
@@ -22,7 +22,7 @@ export default class ProductList {
     this.listElement = listElement;
   }
   async init() {
-    const list = await this.dataSource.getData();
+    const list = await this.dataSource.getData(this.category);
     this.renderList(list);
   }
 

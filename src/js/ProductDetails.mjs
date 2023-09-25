@@ -10,7 +10,7 @@ function productDetailsTemplate(product) {
     <h2 class="divider">${product.NameWithoutBrand}</h2>
     <img
       class="divider"
-      src="${product.Image}"
+      src="${product.Images.PrimaryLarge}"
       alt="${product.NameWithoutBrand}"
     />
     <p class="product-card__price">$${product.FinalPrice}</p>
@@ -28,7 +28,7 @@ export default class ProductDetails {
     this.product = {};
   }
   async init() {
-    this.product = await new dataSource(getParam('category')).findProductById(getParam('product'));
+    this.product = await new dataSource().findProductById(getParam('product'),getParam('category'));
     this.renderProductDetails('main');
     document
       .getElementById('addToCart')
