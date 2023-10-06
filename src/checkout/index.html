@@ -8,18 +8,165 @@
 
     <title>Sleep Outside | Checkout</title>
 
-    <link rel="stylesheet" href="css/style.css" />
-    <script src="./js/main.js" type="mudule"></script>
+    <link rel="stylesheet" href="./checkout.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <script src="../js/checkout.js" type="module"></script>
   </head>
 
   <body>
-    <header class="divider"></header>
+    <header class="divider" id="main-header">
+      <p class="aa" id="cartNumber"></p>
+    </header>
 
-    <main class="divider" id="main-header">
+    <main class="divider">
       <section class="products">
-        <h2>Review & Place your Order</h2>
+        <div class="row size-p">
+          <div class="col-75">
+            <div class="container">
+              <h2>Review & Place your Order</h2>
+              <form name="checkout">
+                <div class="row grid">
+                  <div class="col-50">
+                    <label for="fname"
+                      ><i class="fa fa-user"></i> First Name</label
+                    >
+                    <input
+                      type="text"
+                      id="fname"
+                      name="fname"
+                      required
+                      placeholder="Yeampier"
+                    />
+                    <label for="lname"
+                      ><i class="fa fa-envelope"></i> Last Name</label
+                    >
+                    <input
+                      type="text"
+                      name="lname"
+                      required
+                      placeholder="Huerta"
+                    />
+                    <label for="street"
+                      ><i class="fa fa-address-card-o"></i> Address</label
+                    >
+                    <input
+                      type="text"
+                      name="street"
+                      required
+                      placeholder="542 W. 15th Street"
+                    />
+                    <label for="city"
+                      ><i class="fa fa-institution"></i> City</label
+                    >
+                    <input
+                      type="text"
+                      id="city"
+                      name="city"
+                      required
+                      placeholder="New York"
+                    />
+
+                    <div class="row">
+                      <div class="col-50">
+                        <label for="state">State</label>
+                        <input
+                          type="text"
+                          id="state"
+                          name="state"
+                          required
+                          placeholder="NY"
+                        />
+                      </div>
+                      <div class="col-50">
+                        <label for="zip">Zip</label>
+                        <input
+                          type="text"
+                          id="zip"
+                          name="zip"
+                          pattern="[0-9]+"
+                          required
+                          placeholder="10001"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-50 grid-2">
+                    <h3>Payment</h3>
+                    <label>Accepted Cards</label>
+
+                    <label for="cardNumber">Credit card number</label>
+                    <input
+                      name="cardNumber"
+                      required
+                      value="1234123412341234"
+                      type="text"
+                      pattern="[0-9]+"
+
+                    />
+
+                      <div >
+                        <label for="expiration">Exp Year</label>
+                        <input
+                          type="month"
+                          name="expiration"
+                          required
+                          value="12/24"
+                        />
+                      </div>
+                      <div>
+                        <label class="code" for="code">CVV</label>
+                        <input
+                          type="text"
+                          pattern="[0-9]+"
+
+                          id="cvv"
+                          name="code"
+                          required
+                          value="123"
+                          placeholder="352"
+                        />
+                      </div>
+                  </div>
+                </div>
+                <div class="checkout-summary">
+                  <h3>Order</h3>
+                  <ul>
+                    <li>
+                      <label for="cartTotal"
+                        >Item Subtotal(<span id="num-items"></span>)</label
+                      >
+                      <p name="cartTotal" id="cartTotal"></p>
+                    </li>
+                    <li>
+                      <label for="shipping">Shipping Estimate</label>
+                      <p id="shipping"></p>
+                    </li>
+                    <li>
+                      <label for="tax">Tax</label>
+                      <p id="tax"></p>
+                    </li>
+                    <li>
+                      <label for="orderTotal"><b>Order Total</b></label>
+                      <p id="orderTotal"></p>
+                    </li>
+                  </ul>
+                </div>
+
+                <input
+                  id="checkoutSubmit"
+                  type="submit"
+                  value="Continue to checkout"
+                  class="btn"
+                />
+              </form>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
+    <p   class="error" id="error"></p>
 
     <footer id="main-footer"></footer>
   </body>

@@ -1,10 +1,8 @@
-import { renderListWithTemplate } from './utils.mjs';
-
+import { renderListWithTemplate } from "./utils.mjs";
 
 function productCardTemplate(product) {
-  if (product.Id == '880RR' || product.Id == '985RF' || product.Id == '344YJ' || product.Id == '985PR') {
-    return `<li class="product-card">
-  <a href="product_pages/index.html?product=${product.Id}&category=${product.Category}">
+  return `<li class="product-card">
+  <a href="/product_pages/index.html?product=${product.Id}">
   <img
     src="${product.Images.PrimaryMedium}"
     alt="Image of ${product.Name}"
@@ -12,8 +10,8 @@ function productCardTemplate(product) {
   <h3 class="card__brand">${product.Brand.Name}</h3>
   <h2 class="card__name">${product.Name}</h2>
   <p class="product-card__price">$${product.FinalPrice}</p></a>
+  
 </li>`;
-  }
 }
 export default class ProductList {
   constructor(category, dataSource, listElement) {
@@ -29,7 +27,4 @@ export default class ProductList {
   renderList(list) {
     renderListWithTemplate(productCardTemplate, this.listElement, list);
   }
-
-
-
 }
